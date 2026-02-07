@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 100% 95%;
+    --foreground: 340 60% 25%;
+
+    --card: 40 80% 97%;
+    --card-foreground: 340 60% 25%;
+
+    --popover: 40 80% 97%;
+    --popover-foreground: 340 60% 25%;
+
+    --primary: 340 82% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 100% 70%;
+    --secondary-foreground: 340 60% 25%;
+
+    --muted: 35 60% 90%;
+    --muted-foreground: 340 30% 45%;
+
+    --accent: 340 70% 75%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 340 40% 85%;
+    --input: 340 40% 85%;
+    --ring: 340 82% 65%;
+
+    --radius: 1rem;
+
+    --valentine-pink: 340 82% 65%;
+    --valentine-pink-light: 340 80% 85%;
+    --valentine-rose: 350 90% 70%;
+    --valentine-yellow: 45 100% 70%;
+    --valentine-yellow-light: 45 100% 88%;
+    --valentine-warm: 30 100% 92%;
+    --valentine-coral: 10 90% 72%;
+
+    --font-display: 'Dancing Script', cursive;
+    --font-body: 'Quicksand', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 340 30% 10%;
+    --foreground: 40 80% 95%;
+    --card: 340 30% 12%;
+    --card-foreground: 40 80% 95%;
+    --popover: 340 30% 12%;
+    --popover-foreground: 40 80% 95%;
+    --primary: 340 82% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 80% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 340 20% 20%;
+    --muted-foreground: 340 30% 65%;
+    --accent: 340 70% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 340 20% 25%;
+    --input: 340 20% 25%;
+    --ring: 340 82% 65%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .bg-valentine-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--valentine-yellow-light)) 0%,
+      hsl(var(--valentine-warm)) 25%,
+      hsl(var(--valentine-pink-light)) 60%,
+      hsl(var(--valentine-rose)) 100%
+    );
+  }
+
+  .text-valentine-pink {
+    color: hsl(var(--valentine-pink));
+  }
+
+  .bg-valentine-pink {
+    background-color: hsl(var(--valentine-pink));
+  }
+
+  .bg-valentine-yellow {
+    background-color: hsl(var(--valentine-yellow));
+  }
+
+  .text-valentine-rose {
+    color: hsl(var(--valentine-rose));
+  }
+
+  .shadow-valentine {
+    box-shadow: 0 8px 32px -8px hsl(var(--valentine-pink) / 0.4),
+                0 4px 16px -4px hsl(var(--valentine-rose) / 0.2);
+  }
+
+  .btn-yes {
+    @apply bg-valentine-pink text-primary-foreground font-body font-bold 
+           rounded-full px-10 py-4 text-xl 
+           transition-all duration-300 
+           hover:scale-110 active:scale-95;
+    box-shadow: 0 6px 24px -4px hsl(var(--valentine-pink) / 0.5);
+  }
+
+  .btn-yes:hover {
+    box-shadow: 0 10px 40px -4px hsl(var(--valentine-pink) / 0.6);
+  }
+
+  .btn-no {
+    @apply bg-valentine-yellow text-foreground font-body font-bold 
+           rounded-full px-10 py-4 text-xl 
+           transition-all duration-200;
+    box-shadow: 0 4px 16px -4px hsl(var(--valentine-yellow) / 0.5);
+  }
+}
+
+/* Floating flower animation */
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes pulse-heart {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes float-button {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-button {
+  animation: float-button 2.5s ease-in-out infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation: float-up var(--duration, 12s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.animate-sway {
+  animation: sway var(--sway-duration, 4s) ease-in-out infinite;
+  animation-delay: var(--sway-delay, 0s);
+}
+
+.animate-pulse-heart {
+  animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+.animate-confetti {
+  animation: confetti-fall var(--confetti-duration, 3s) ease-in forwards;
+  animation-delay: var(--confetti-delay, 0s);
+}
